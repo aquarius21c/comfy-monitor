@@ -5,6 +5,7 @@
   "author": {
     "name": "HG"
   },
+  "license": "MIT",
   "types": "./types/index.d.ts",
   "userConfig": {
     "comfyUrl": {
