@@ -199,7 +199,7 @@ export function statusLine(
   isOnline: boolean,
   extra: { progress?: Progress | null; isVramHigh?: boolean } = {},
 ): string {
-  if (!isOnline || !sample) return 'Comfy ○ 꺼짐'
+  if (!isOnline || !sample) return 'Comfy ○ OFF'
   const { progress, isVramHigh = false } = extra
   const parts = [`실행 ${sample.running}`, `대기 ${sample.pending}`]
   if (progress && sample.running > 0 && progress.max > 0) {
@@ -208,5 +208,5 @@ export function statusLine(
   parts.push(`${isVramHigh ? '⚠ ' : ''}VRAM ${sample.vramUsed.toFixed(1)}/${Math.round(sample.vramTotal)}G`)
   if (sample.gpu !== null) parts.push(`GPU ${Math.round(sample.gpu)}%`)
 
-  return `Comfy ● ${parts.join(' · ')}`
+  return `Comfy ● ON · ${parts.join(' · ')}`
 }

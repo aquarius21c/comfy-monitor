@@ -396,14 +396,14 @@ export const register: Register = (on, options) => {
     const { Box, Text, Button } = ui
 
     const header = s.isOnline
-      ? `● 연결됨 · ${s.device || 'GPU'}${s.version ? ` · v${s.version}` : ''}`
-      : `○ ${baseUrl}에 연결되지 않음`
+      ? `● ON · ${s.device || 'GPU'}${s.version ? ` · v${s.version}` : ''}`
+      : `○ OFF · ${baseUrl}`
 
     const controls = (
       <Box flexDirection="row">
         <Button
           key="pause"
-          label={s.isPaused ? '켜기' : '일시정지'}
+          label={s.isPaused ? 'ON' : 'OFF'}
           onPress={() => (s.isPaused ? start($) : update($, status, x => ({ ...x, isPaused: true })))}
         />
         <Text> </Text>

@@ -36,8 +36,8 @@ test('shortens device names', async () => {
 
 test('status line shows queue, VRAM and GPU, or off', async () => {
   const sample = toSample(0, parseSystemStats(SYSTEM_STATS), { running: 1, pending: 2 }, { gpu: 87.4, temp: 60, power: 300 })
-  expect(statusLine(sample, true)).toBe('Comfy ● 실행 1 · 대기 2 · VRAM 10.0/16G · GPU 87%')
-  expect(statusLine(sample, false)).toBe('Comfy ○ 꺼짐')
+  expect(statusLine(sample, true)).toBe('Comfy ● ON · 실행 1 · 대기 2 · VRAM 10.0/16G · GPU 87%')
+  expect(statusLine(sample, false)).toBe('Comfy ○ OFF')
 })
 
 test('sparkline scales to max and keeps the newest values', async () => {

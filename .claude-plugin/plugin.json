@@ -1,6 +1,6 @@
 {
   "name": "comfy-monitor",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "ComfyUI 사용량(VRAM, RAM, GPU, 큐)과 작업 진행률·최근 작업을 상태줄과 패널 그래프로 보여 줍니다",
   "author": {
     "name": "HG"

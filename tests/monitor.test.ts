@@ -43,7 +43,7 @@ test('polls ComfyUI, fills the status line and draws the pane on each surface', 
   await $.session.start({ cwd: '/', surface: 'terminal', isInteractive: true })
   await clock.advance(4_100)
 
-  expect(state.statuses.at(-1)).toBe('Comfy ● 실행 1 · 대기 0 · VRAM 10.0/16G · GPU 55%')
+  expect(state.statuses.at(-1)).toBe('Comfy ● ON · 실행 1 · 대기 0 · VRAM 10.0/16G · GPU 55%')
 
   const terminal = await $.ui.mount({ plugin: 'comfy-monitor', surface: 'terminal', ...PANE })
   expect(await terminal.find({ type: 'Text', text: /RTX 5080/ })).toBeDefined()
@@ -66,7 +66,7 @@ test('shows off after three failed polls', async ($, on) => {
   state.isUp = false
   await clock.advance(8_100)
 
-  expect(state.statuses.at(-1)).toBe('Comfy ○ 꺼짐')
+  expect(state.statuses.at(-1)).toBe('Comfy ○ OFF')
 })
 
 test('off stops polling and clears the line; on starts it again', async ($, on) => {
@@ -142,5 +142,5 @@ test('stop runs comfy stop, and asks first while jobs are running', async ($, on
   const done = await $.command.run(run('stop now'))
   expect(done.text).toContain('종료했습니다')
   expect(argvs.find(argv => argv[1] === 'stop')?.[0]).toContain('comfy')
-  expect(state.statuses.at(-1)).toBe('Comfy ○ 꺼짐')
+  expect(state.statuses.at(-1)).toBe('Comfy ○ OFF')
 })

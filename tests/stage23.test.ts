@@ -65,7 +65,7 @@ test('progress bar and status line show the steps; VRAM warning marks the line',
   const p = { value: 3, max: 6, source: 'log' as const, t: 0 }
   expect(progressBar(p, 10)).toBe('█████░░░░░ 3/6')
   const s = toSample(0, parseSystemStats(SYSTEM_STATS), { running: 1, pending: 0 }, null)
-  expect(statusLine(s, true, { progress: p, isVramHigh: true })).toBe('Comfy ● 실행 1 · 대기 0 · 단계 3/6 · ⚠ VRAM 10.0/16G')
+  expect(statusLine(s, true, { progress: p, isVramHigh: true })).toBe('Comfy ● ON · 실행 1 · 대기 0 · 단계 3/6 · ⚠ VRAM 10.0/16G')
 })
 
 test('VRAM counts as high only after holding the line, and clears with a margin', async () => {
@@ -141,7 +141,7 @@ test('bridge lines show the sampler steps on the status line and the pane', asyn
 
   await $.session.start({ cwd: '/', surface: 'terminal', isInteractive: true })
   await clock.advance(4_100)
-  expect(world.statuses.at(-1)).toBe('Comfy ● 실행 1 · 대기 0 · 단계 4/20 · VRAM 10.0/16G · GPU 55%')
+  expect(world.statuses.at(-1)).toBe('Comfy ● ON · 실행 1 · 대기 0 · 단계 4/20 · VRAM 10.0/16G · GPU 55%')
 
   for (const surface of ['terminal', 'desktop'] as const) {
     const pane = await $.ui.mount({ plugin: 'comfy-monitor', surface, ...PANE })
