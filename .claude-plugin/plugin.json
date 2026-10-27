@@ -1,0 +1,65 @@
+{
+  "name": "comfy-monitor",
+  "version": "0.4.0",
+  "description": "ComfyUI 사용량(VRAM, RAM, GPU, 큐)과 작업 진행률·최근 작업을 상태줄과 패널 그래프로 보여 줍니다",
+  "author": {
+    "name": "HG"
+  },
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "comfyUrl": {
+      "type": "string",
+      "title": "ComfyUI 주소",
+      "description": "조회할 ComfyUI 서버 주소",
+      "default": "http://127.0.0.1:8188"
+    },
+    "intervalSeconds": {
+      "type": "number",
+      "title": "조회 주기(초)",
+      "description": "몇 초마다 ComfyUI 상태를 읽을지",
+      "default": 2
+    },
+    "useNvidiaSmi": {
+      "type": "boolean",
+      "title": "nvidia-smi 사용",
+      "description": "GPU 사용률, 온도, 전력을 nvidia-smi로 읽기",
+      "default": true
+    },
+    "autoStart": {
+      "type": "boolean",
+      "title": "세션 시작 시 자동 실행",
+      "description": "끄면 /comfy-monitor on 으로 켤 때까지 조회하지 않음",
+      "default": true
+    },
+    "comfyBin": {
+      "type": "string",
+      "title": "comfy-cli 경로",
+      "description": "/comfy-monitor stop 이 실행할 comfy-cli (PATH에 없으면 comfy.exe 전체 경로)",
+      "default": "comfy"
+    },
+    "useBridge": {
+      "type": "boolean",
+      "title": "단계 진행률 보조 스크립트",
+      "description": "comfy_ws_bridge.py로 웹소켓·comfy-cli 로그에서 샘플러 단계 n/m 읽기",
+      "default": true
+    },
+    "pythonBin": {
+      "type": "string",
+      "title": "보조 스크립트용 Python",
+      "description": "websocket-client가 설치된 Python (comfy-cli를 설치한 venv의 python 권장)",
+      "default": "python"
+    },
+    "comfyLog": {
+      "type": "string",
+      "title": "ComfyUI 로그 파일",
+      "description": "단계 진행률을 읽을 로그. 비우면 comfy-cli 설정의 background_log",
+      "default": ""
+    },
+    "vramWarnPercent": {
+      "type": "number",
+      "title": "VRAM 경고 기준(%)",
+      "description": "VRAM 사용률이 이 값 이상으로 10초 넘게 지속되면 경고",
+      "default": 95
+    }
+  }
+}

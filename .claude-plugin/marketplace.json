@@ -1,0 +1,12 @@
+{
+  "name": "comfy-monitor",
+  "owner": {
+    "name": "HG"
+  },
+  "plugins": [
+    {
+      "name": "comfy-monitor",
+      "source": "./"
+    }
+  ]
+}
