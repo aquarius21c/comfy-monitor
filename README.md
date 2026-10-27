@@ -25,7 +25,7 @@ claude plugin install comfy-monitor --marketplace aquarius21c/comfy-monitor
 `/comfy-monitor`로 패널을 엽니다. 상태줄 예시:
 
 ```
-Comfy ● ON · 실행 1 · 대기 2 · 단계 4/20 · VRAM 9.4/16G · GPU 87%
+Comfy ● ON · Run 1 · Wait 2 · 단계 4/20 · VRAM 9.4/16G · GPU 87%
 ```
 
 VRAM이 높게 유지되면 VRAM 앞에 `⚠`가 붙고, ComfyUI가 응답하지 않으면 `Comfy ○ OFF`로 바뀝니다.
@@ -77,7 +77,7 @@ MIT. `LICENSE` 파일을 보세요.
 
 ## English summary
 
-comfy-monitor is a Claude Code mod that shows ComfyUI usage without opening the ComfyUI window: a status line (`Comfy ● ON · 실행 1 · 대기 2 · 단계 4/20 · VRAM 9.4/16G · GPU 87%`, or `Comfy ○ OFF`) and a pane with 10-minute charts of GPU, VRAM, RAM and the queue, the running prompt's sampler steps, and the last finished jobs. It toasts when a job finishes, fails or is interrupted, and when VRAM stays at or over 95% for 10 s. Recent jobs and samples survive across sessions.
+comfy-monitor is a Claude Code mod that shows ComfyUI usage without opening the ComfyUI window: a status line (`Comfy ● ON · Run 1 · Wait 2 · 단계 4/20 · VRAM 9.4/16G · GPU 87%`, or `Comfy ○ OFF`) and a pane with 10-minute charts of GPU, VRAM, RAM and the queue, the running prompt's sampler steps, and the last finished jobs. It toasts when a job finishes, fails or is interrupted, and when VRAM stays at or over 95% for 10 s. Recent jobs and samples survive across sessions.
 
 Install with `/plugin install comfy-monitor --marketplace aquarius21c/comfy-monitor`. It needs a local ComfyUI (`http://127.0.0.1:8188` by default), `nvidia-smi` for GPU %, and a Python with `websocket-client` for the step progress helper (`hooks/comfy_ws_bridge.py`, which reads ComfyUI's websocket under its own client id and the comfy-cli log's tqdm bars). Commands: `/comfy-monitor` (open the pane), `on` / `off`, `stop` (stop the ComfyUI comfy-cli launched). The UI text is Korean; settings are listed in the table above.
 

@@ -194,6 +194,11 @@ export function toSample(
   }
 }
 
+/** Run 1 · Wait 2 */
+export function queueLabel(running: number, pending: number): string {
+  return `Run ${running} · Wait ${pending}`
+}
+
 export function statusLine(
   sample: Sample | undefined,
   isOnline: boolean,
@@ -201,7 +206,7 @@ export function statusLine(
 ): string {
   if (!isOnline || !sample) return 'Comfy ○ OFF'
   const { progress, isVramHigh = false } = extra
-  const parts = [`실행 ${sample.running}`, `대기 ${sample.pending}`]
+  const parts = [queueLabel(sample.running, sample.pending)]
   if (progress && sample.running > 0 && progress.max > 0) {
     parts.push(`단계 ${progress.value}/${progress.max}`)
   }

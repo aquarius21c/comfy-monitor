@@ -43,7 +43,7 @@ test('polls ComfyUI, fills the status line and draws the pane on each surface', 
   await $.session.start({ cwd: '/', surface: 'terminal', isInteractive: true })
   await clock.advance(4_100)
 
-  expect(state.statuses.at(-1)).toBe('Comfy ● ON · 실행 1 · 대기 0 · VRAM 10.0/16G · GPU 55%')
+  expect(state.statuses.at(-1)).toBe('Comfy ● ON · Run 1 · Wait 0 · VRAM 10.0/16G · GPU 55%')
 
   const terminal = await $.ui.mount({ plugin: 'comfy-monitor', surface: 'terminal', ...PANE })
   expect(await terminal.find({ type: 'Text', text: /RTX 5080/ })).toBeDefined()
@@ -52,7 +52,7 @@ test('polls ComfyUI, fills the status line and draws the pane on each surface', 
 
   const desktop = await $.ui.mount({ plugin: 'comfy-monitor', surface: 'desktop', ...PANE })
   const charts = (await desktop.findAll({ type: 'Svg' })).map(svg => String(svg.props.alt))
-  expect(charts).toEqual(['GPU: 55% · 61°C · 250W', 'VRAM: 10.0 / 16 GB', 'RAM: 24.0 / 64 GB', '큐: 실행 1 · 대기 0'])
+  expect(charts).toEqual(['GPU: 55% · 61°C · 250W', 'VRAM: 10.0 / 16 GB', 'RAM: 24.0 / 64 GB', '큐: Run 1 · Wait 0'])
   await desktop.unmount()
 })
 

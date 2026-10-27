@@ -11,6 +11,7 @@ import {
   parseQueue,
   parseSystemStats,
   progressBar,
+  queueLabel,
   statusLine,
   toSample,
   vramHigh,
@@ -155,7 +156,7 @@ async function stopComfy($: EngineInterface, isForced: boolean): Promise<string>
   const last = (await read($, samples)).at(-1)
   const isBusy = (await read($, status)).isOnline && last !== undefined && last.running + last.pending > 0
   if (isBusy && !isForced && last) {
-    return `작업이 남아 있습니다 (실행 ${last.running}, 대기 ${last.pending}). 그래도 끄려면 /comfy-monitor stop now`
+    return `작업이 남아 있습니다 (Run ${last.running}, Wait ${last.pending}). 그래도 끄려면 /comfy-monitor stop now`
   }
 
   let result
@@ -471,7 +472,7 @@ export const register: Register = (on, options) => {
     const vramText = `${last.vramUsed.toFixed(1)} / ${last.vramTotal.toFixed(0)} GB`
     const ramText = `${last.ramUsed.toFixed(1)} / ${last.ramTotal.toFixed(0)} GB`
     const gpuText = hasGpu ? `${Math.round(last.gpu ?? 0)}% · ${Math.round(last.temp ?? 0)}°C · ${Math.round(last.power ?? 0)}W` : ''
-    const queueText = `실행 ${last.running} · 대기 ${last.pending}`
+    const queueText = queueLabel(last.running, last.pending)
 
     if (e.surface !== 'terminal' && 'Svg' in ui) {
       const { Svg } = ui
