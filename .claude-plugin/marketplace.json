@@ -3,6 +3,7 @@
   "owner": {
     "name": "HG"
   },
+  "description": "ComfyUI usage monitor for Claude Code: VRAM, RAM, GPU, queue and job progress in the status line and pane / Claude Code용 ComfyUI 사용량 모니터: VRAM·RAM·GPU·큐·작업 진행률을 상태줄과 패널에 표시",
   "plugins": [
     {
       "name": "comfy-monitor",

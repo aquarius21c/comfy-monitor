@@ -160,7 +160,8 @@ Set in `/config` or `pluginConfigs.comfy-monitor` in settings. / `/config` 또�
 comfy-monitor/
 ├── .claude-plugin/
 │   ├── plugin.json         Mod manifest and user settings / mod 정보와 사용자 설정
-│   └── marketplace.json    Marketplace entry / 마켓플레이스 등록 정보
+│   ├── marketplace.json    Marketplace entry / 마켓플레이스 등록 정보
+│   └── icon.png            Plugin icon (1024 px) / 플러그인 아이콘 (1024 px)
 ├── hooks/
 │   ├── register.tsx        Status line, pane, commands, toasts / 상태줄·패널·명령·알림
 │   ├── comfy.ts            ComfyUI and nvidia-smi readers / ComfyUI·nvidia-smi 조회
